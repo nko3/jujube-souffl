@@ -19,7 +19,6 @@ jsPathify assets, console.log
 
 # All routes return layout.  (Chaplin loads views dynamically)
 app.get ['/', '/about'], (req, resp) -> 
-  console.log req.session, resp.session
   resp.render 'index'
 
 # Define Port
