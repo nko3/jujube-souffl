@@ -2,6 +2,9 @@ express = require 'express'
 stylus = require 'stylus'
 assets = require 'connect-assets'
 jsPathify = require 'connect-assets-jspaths'
+mongoose = require "mongoose"
+
+config = require "./config"
 auth = require "./auth"
 
 app = express()
@@ -20,6 +23,13 @@ jsPathify assets, console.log
 # All routes return layout.  (Chaplin loads views dynamically)
 app.get ['/', '/about'], (req, resp) -> 
   resp.render 'index'
+
+connect = (dbUrl = config.dbServer) ->
+    state = mongoose?.connection?.db?._state
+    if !state or (state not in ["connected", "connecting"])
+        mongoose.connect dbUrl
+
+connect()
 
 # Define Port
 port = process.env.PORT or process.env.VMC_APP_PORT or 3000

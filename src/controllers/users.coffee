@@ -3,8 +3,11 @@
 {ModelController} = require "./base"
 
 class UserController extends ModelController
+	constructor: ->
+		super User
+
 	findOrCreate: (opts, done) ->
-		@find opts.id, (err, user) =>
+		@findOne opts.id, (err, user) =>
 			done err if err
 
 			if user 
