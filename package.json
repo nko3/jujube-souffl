@@ -22,7 +22,7 @@
     "test": "mocha --require should --compilers coffee:coffee-script --colors"
   },
   "devDependencies": {
-    "coffee-script": "*",
+    "coffee-script": "1.4.0",
     "mocha": "*",
     "should": "*",
     "request": "*",
