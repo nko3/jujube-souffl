@@ -2,6 +2,7 @@ express = require 'express'
 stylus = require 'stylus'
 assets = require 'connect-assets'
 jsPathify = require 'connect-assets-jspaths'
+auth = require "./auth"
 
 app = express()
 # Add Connect Assets
@@ -11,10 +12,14 @@ app.use express.static(process.cwd() + "/public")
 # Set View Engine
 app.set 'view engine', 'jade'
 
+# set up our authentication
+auth.init app
+
 jsPathify assets, console.log
 
 # All routes return layout.  (Chaplin loads views dynamically)
 app.get ['/', '/about'], (req, resp) -> 
+  console.log req.session, resp.session
   resp.render 'index'
 
 # Define Port

@@ -1,6 +1,6 @@
 {
-  "name": "express-coffee",
-  "version": "1.5.1",
+  "name": "tweetDVR",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "express": "3.x",
@@ -13,7 +13,9 @@
     "which": "*",
     "less": "~1.3.0",
     "passport": "~0.1.15",
-    "passport-twitter": "~0.1.4"
+    "passport-twitter": "~0.1.4",
+    "mongoose": "~3.3.1",
+    "connect-mongodb": "~1.1.5"
   },
   "scripts": {
     "start": "node server.js",
