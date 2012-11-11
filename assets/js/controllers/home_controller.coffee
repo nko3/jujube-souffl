@@ -7,7 +7,7 @@ define [
 
   class HomeController extends Chaplin.Controller
 
-    title: 'Twitter DVR'
+    title: 'Tweet DVR'
 
     historyURL: (params) ->
       '/'
