@@ -22,14 +22,14 @@ define [
     initialize: ->
       @modelBind "change:loggedIn", @render
 
-      @subscribeEvent "login:pivotal", @handlePivotalLogin
+      @subscribeEvent "login:twitter", @handleTwitterLogin
 
-    handlePivotalLogin: (userName, token) ->
+    handleTwitterLogin: (userName, token) ->
       @model.set
         loggedIn: true
         displayName: userName
 
-    handlePivotalLogout: ->
+    handleTwitterLogout: ->
       @model.set
         loggedIn: false
         displayName: 'Not Logged In'

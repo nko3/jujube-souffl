@@ -3,13 +3,22 @@
 {ModelController} = require "./base"
 
 class UserController extends ModelController
+	constructor: ->
+		super User
+
 	findOrCreate: (opts, done) ->
-		@find opts.id, (err, user) =>
+		console.log "findOrCreate", opts
+		@findOne { id: opts.id }, (err, user) =>
 			done err if err
+
+			console.log "findOne", err, user
 
 			if user 
 				return done null, user
 
-			@create opts, done
+			@create opts, (err, user) ->
+				console.log "create", err, user
+
+				done err, user
 
 module.exports = UserController

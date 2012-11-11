@@ -6,7 +6,7 @@ define [
   'use strict'
 
   ###
-    Handles the display of the user information in the title bar
+    Handles the 
   ###
   class LoginController extends Chaplin.Controller
 
@@ -24,16 +24,16 @@ define [
 
     registerLoginEvents: ->
 
-      @subscribeEvent "login:pivotal", @pivotalLoggedIn
-      @subscribeEvent "logout:pivotal", @pivotalLoggedOut
+      @subscribeEvent "login:twitter", @twitterLoggedIn
+      @subscribeEvent "logout:twitter", @twitterLoggedOut
 
-    pivotalLoggedIn: (username, token) ->
-      @mediator.pivotaluser = {username, token}      
-      # Load the weeks page
-      @mediator.publish '!startupController', 'week', 'show'
+    twitterLoggedIn: (username, token) ->
+      @mediator.user = {username, token}      
+      # Load another page
+      #@mediator.publish '!startupController', 'week', 'show'
 
-    pivotalLoggedOut: ->
-      @mediator.pivotaluser = null
+    twitterLoggedOut: ->
+      @mediator.user = null
       # Load home page.
       @mediator.publish '!startupController', 'home', 'show'  
 
