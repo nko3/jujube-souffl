@@ -1,1 +1,2 @@
-require('./app');
+require("coffee-script");
+require('./src');
