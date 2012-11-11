@@ -1,9 +1,8 @@
 define [
-  'jquery'
   'chaplin'
   'models/shows'
   'views/shows'
-], ($, Chaplin, Shows, ShowsView) ->
+], (Chaplin, Shows, ShowsView) ->
   'use strict'
 
   class ShowsController extends Chaplin.Controller

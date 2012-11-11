@@ -29,8 +29,8 @@ define [
 
     pivotalLoggedIn: (username, token) ->
       @mediator.pivotaluser = {username, token}      
-      # Load the weeks page
-      @mediator.publish '!startupController', 'week', 'show'
+      # Load the shows page
+      @mediator.publish '!startupController', 'shows', 'show'
 
     pivotalLoggedOut: ->
       @mediator.pivotaluser = null

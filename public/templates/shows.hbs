@@ -11,58 +11,71 @@
 
 <div id="show-modal" class="modal hide fade">
   <div class="modal-header">
-    <h3>Add A Show</h3>
+    <h3>Create Show Entry</h3>
   </div>
 
   <div class="modal-body">
-    <div class="control-group">
-      <label class="control-label" for="inputShowName">Name</label>
-      <div class="controls">
-        <input type="text" id="inputShowName" placeholder="Name of Show">
-      </div>
-    </div>
+    <div>
+      <div class="col1 pull-left">
+        <div class="control-group">
+          <label class="control-label" for="showName">Name</label>
+          <div class="controls">
+            <input type="text" id="showName" placeholder="Name of Show">
+          </div>
+        </div>
 
-    <div class="control-group">
-      <label class="control-label" for="startDate">Start Date</label>
-      <div class="controls">
-        <div class="input-append date" id="startDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-          <input class="span2" size="16" type="text" value="12-02-2012" readonly>
-          <span class="add-on"><i class="icon-calendar"></i></span>
+        <div class="control-group">
+          <label class="control-label" for="startDate">Start Date</label>
+          <div class="controls">
+            <div class="input-append date" id="startDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+              <input class="span2" size="16" type="text" value="12-02-2012" readonly>
+              <span class="add-on"><i class="icon-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="startTime">Start Time</label>
+          <div class="controls">
+            <div class="input-append bootstrap-timepicker-component">
+              <input id="startTime" type="text" class="timepicker-default input-small">
+              <span class="add-on">
+                  <i class="icon-time"></i>
+              </span>
+            </div>
+          </div>  
+        </div> 
+        <div class="control-group">
+          <label class="control-label" for="duration">Duration (minutes)</label>
+          <div class="controls">
+           <input id="duration" type="number" min="30" max="120" step="15" value="30"/>
+          </div>  
+        </div> 
+
+        <div class="control-group">
+          <div class="controls">
+            <label class="control-label" for="occurRepeat">Occurances</label>
+            <label class="radio">
+              <input type="radio" name="occurance" id="occurRepeat" value="repeat" checked>Repeat
+            </label>
+            <label class="radio">
+              <input type="radio" name="occurance" id="occurOnce" value="once">Once
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label" for="startTime">Start Time</label>
-      <div class="controls">
-        <div class="input-append bootstrap-timepicker-component">
-          <input id="startTime" type="text" class="timepicker-default input-small">
-          <span class="add-on">
-              <i class="icon-time"></i>
-          </span>
+      <div class="col2 pull-right">
+        <div class="control-group">
+          <label class="control-label" for="searchTerms">Search Terms</label>
+          <div class="controls">
+            <textarea id="searchTerms" rows="10"></textarea>
+          </div>
         </div>
-      </div>  
-    </div> 
-
-    <div class="control-group">
-      <label class="control-label" for="duration">Duration (min)</label>
-      <div class="controls">
-       <input type="number" min="30" max="120" step="15"/>
-      </div>  
-    </div> 
-
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox"> Remember me
-        </label>
-        <button type="submit" class="btn">Sign in</button>
       </div>
     </div>
   </div>
-
   <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
+    <button id="cancelModalBtn" class="btn">Close</button>
+    <button id="saveBtn" class="btn btn-primary">Save</button>
   </div>
 </div>
