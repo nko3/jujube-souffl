@@ -78,13 +78,11 @@ init = (app) ->
 			resp.json showDeets
 
 	app.get "/api/tweets/:showId", (req, resp) ->
-		console.log "Tweets", req.user
 		return resp.send 401 unless req.user
 
 		showId = req.param "showId"
 
 		shows.single showId, (err, show) ->
-			console.log "FindShow", err, show
 			if err
 				return resp.send 500, err.message
 
@@ -94,10 +92,6 @@ init = (app) ->
 			tweets = makeTweets req.user.token, req.user.tokenSecret
 
 			tweets.search show.name, (data) ->
-				console.log "TweetSearch: \n", data
-
-				# TODO: Parse out the data
-
 				resp.json data.results
 
 
