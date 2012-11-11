@@ -11,8 +11,6 @@ init = (app) ->
 	# Pages that require authentication
 	app.get ['/shows', '/show', '/user', '/watch/:showId'], (req, resp) ->
 	  return resp.redirect "/" unless req.user
-	  console.log req.user
-
 	  resp.render "index"
 
 	# Register the api related routes

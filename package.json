@@ -2,6 +2,7 @@
   "name": "tweetDVR",
   "version": "1.0.0-4",
   "private": true,
+  "subdomain": "tweetdvr",
   "dependencies": {
     "express": "3.x",
     "jade": "0.26.0",
