@@ -9,11 +9,11 @@ define [
   
   # The application object
   # Choose a meaningful name for your application
-  class MyApplication extends Chaplin.Application
+  class TweetDVRApplication extends Chaplin.Application
 
     # Set your application name here so the document title is set to
     # “Controller title – Site title” (see Layout#adjustTitle)
-    title: 'My Application'
+    title: 'Tweet DVR'
 
     initialize: ->
       super
@@ -53,8 +53,8 @@ define [
       # controllers which do not to respond to routes. They may govern models
       # and views which are needed the whole time, for example header, footer
       # or navigation views.
-      # e.g. new NavigationController()
-      new NavigationController()
+      
+      #new NavigationController()
       new UserController()
 
     # Create additional mediator properties
