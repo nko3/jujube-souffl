@@ -6,3 +6,6 @@ dbUrl = if process.env.NODE_ENV == "production" then prodUrl else devUrl
 
 module.exports =
     dbServer: dbUrl
+    twitter:
+        consumerKey: "dNZoUXAururMB7mkPQkbfA"
+        consumerSecret: "zLYa9YRukIHh5Lj2thM2PMau65HaGM1VPji68piKZZo"
