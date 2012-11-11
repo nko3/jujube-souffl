@@ -9,7 +9,7 @@ init = (app) ->
 	  resp.render 'index'
 
 	# Pages that require authentication
-	app.get ['/shows', '/show', '/user'], (req, resp) ->
+	app.get ['/shows', '/show', '/user', '/watch/:showId'], (req, resp) ->
 	  return resp.redirect "/" unless req.user
 
 	  resp.render "index"
