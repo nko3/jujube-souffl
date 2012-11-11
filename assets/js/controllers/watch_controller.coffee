@@ -4,7 +4,7 @@ define [
 ], (Bases, WatchPageView) ->
   'use strict'
 
-  class ShowsController extends Bases.AuthController
+  class WatchController extends Bases.AuthController
 
     title: 'Watch'
 

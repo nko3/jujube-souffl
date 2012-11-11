@@ -1,10 +1,11 @@
 
 
 auth = require "./auth"
-{Users, Shows} = require "./controllers"
+{Users, Shows, ShowTweets} = require "./controllers"
 
 users = new Users
 shows = new Shows
+showTweets = new ShowTweets
 
 init = (app) ->
 
@@ -67,5 +68,16 @@ init = (app) ->
 			showDeets._id = showId
 
 			resp.json showDeets
+
+	app.get "/api/tweets/:showId", (req, resp) ->
+		return resp.send 401 unless req.user
+
+		showId = req.param "showId"
+
+		showTweets.forShow showId, (err, found) ->
+			if err
+				return resp.send 500, err.message
+
+			resp.json found
 
 module.exports = {init}
