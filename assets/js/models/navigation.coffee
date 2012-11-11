@@ -10,6 +10,7 @@ define [
       tabs: [
         { url: "/", title: "Home", 'class': 'home' }
         { url: "/about", title: "About", 'class': 'about' }
+        { url: "/shows", title: "DTweetR", 'class': 'shows' }
       ]
 
     #initialize: (attributes, options) ->

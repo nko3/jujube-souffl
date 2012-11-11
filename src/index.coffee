@@ -25,7 +25,8 @@ jsPathify assets, console.log
 app.set 'view engine', 'jade'
 
 # All routes return layout.  (Chaplin loads views dynamically)
-app.get ['/', '/about'], (req, resp) -> 
+
+app.get ['/', '/about', '/shows'], (req, resp) -> 
   console.log "Render Page", req.user
   resp.render 'index'
 
