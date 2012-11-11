@@ -1,6 +1,6 @@
 {
   "name": "tweetDVR",
-  "version": "1.0.0",
+  "version": "1.0.0-3",
   "private": true,
   "dependencies": {
     "express": "3.x",
@@ -32,5 +32,6 @@
   },
   "engines": {
     "node": "~0.8.x"
-  }
+  },
+  "subdomain": "tweetdvr"
 }
