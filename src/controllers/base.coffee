@@ -29,6 +29,6 @@ class ModelController
 class FindByUserController extends ModelController
     
     forUser: (userId, done) ->
-        @Model.find {userId}, done
+        @Model.find { user: userId }, done
 
 module.exports = { ModelController, FindByUserController }

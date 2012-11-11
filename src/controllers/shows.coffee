@@ -1,7 +1,7 @@
 [Show] = require "../models/show"
-{ModelController} = require "./base"
+{FindByUserController} = require "./base"
 
-class ShowController extends ModelController
+class ShowController extends FindByUserController
 	constructor: ->
 		super Show
 

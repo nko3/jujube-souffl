@@ -1,4 +1,5 @@
 auth = require "./auth"
+apiRoutes = require "./apiRoutes"
 
 init = (app) ->
 	# All the routes should go in here.
@@ -12,6 +13,9 @@ init = (app) ->
 	  return resp.redirect "/" unless req.user
 
 	  resp.render "index"
+
+	# Register the api related routes
+	apiRoutes.init app
 
 	# Authentication related routes
 	auth.registerRoutes app
