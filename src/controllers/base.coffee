@@ -23,6 +23,9 @@ class ModelController
     remove: (id, done) ->
         @Model.remove {_id: id}, done
 
+    all: (done) ->
+        @Model.find {}, done
+
 class FindByUserController extends ModelController
     
     forUser: (userId, done) ->

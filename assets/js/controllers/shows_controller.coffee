@@ -1,24 +1,18 @@
 define [
-  'chaplin'
+  'controllers/base'
   'models/shows'
   'views/shows'
-], ($, Chaplin, Shows, ShowsView) ->
+], (Bases, Shows, ShowsView) ->
   'use strict'
 
-  class ShowsController extends Chaplin.Controller
+  class ShowsController extends Bases.AuthController
 
-    title: 'Twitter DVR - Shows'
+    title: 'Shows'
 
     historyURL: (params) ->
       '/shows'
 
     show: (params) ->
-      console.debug 'ShowsController#show'
+      super
       @model = new Shows()
       @view = new ShowsView {@model}
-
-$( ->
-  $('#startDate').datepicker()
-  $('#startTime').timepicker()
-  return
-  ) 

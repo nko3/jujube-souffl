@@ -15,21 +15,20 @@ twitterOpts =
 	consumerSecret: "zLYa9YRukIHh5Lj2thM2PMau65HaGM1VPji68piKZZo"
 	callbackURL: "http://tweetdvr.net/auth/twitter/callback"
 
+authenticate = -> passport.authenticate
+
 init = (app, sessionUrl = config.dbServer) ->
 
 	passport.serializeUser (user, done) ->
-		console.log "serializeUser", user
 		# Serialize our users by id
 		done null, user.id
 
 	passport.deserializeUser (id, done) ->
-		console.log "deserializeUser", id
 		# Retrieve our users by id
 		users.findOne { id }, done
 	
 	strat = new TwitterStrategy twitterOpts, (token, tokenSecret, profile, done) ->
 		{ id, displayName } = profile
-		console.log "TwitterStrategy", profile, token, tokenSecret
 		users.findOrCreate {id, displayName, token, tokenSecret}, done
 
 	passport.use strat
@@ -57,6 +56,7 @@ init = (app, sessionUrl = config.dbServer) ->
 
 	        return userData
 
+registerRoutes = (app) ->
 	# Redirect the user to Twitter for authentication.  When complete, Twitter
 	# will redirect the user back to the application at
 	# /auth/twitter/callback
@@ -66,11 +66,10 @@ init = (app, sessionUrl = config.dbServer) ->
 	# authentication process by attempting to obtain an access token.  If
 	# access was granted, the user will be logged in.  Otherwise,
 	# authentication has failed.
-	app.get '/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/' })
+	app.get '/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/shows', failureRedirect: '/' })
 
 	app.get '/logout', (req, res) ->
 	  req.logOut()
 	  res.redirect '/'
 
-module.exports = 
-	init: init
+module.exports = { init, authenticate, registerRoutes }
