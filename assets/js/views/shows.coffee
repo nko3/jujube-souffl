@@ -10,3 +10,7 @@ define [
 
     constructor: (props) ->
       super props, "showsPage", template
+
+    afterRender: ->
+      @$("#startDate").datepicker()
+      @$("#startTime").timepicker()
