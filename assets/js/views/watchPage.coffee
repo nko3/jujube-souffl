@@ -13,12 +13,15 @@ define [
 
     class ShowTweetModel extends BaseModel
         defaults:
-            time: 0
+            time: null
+            timeWords: "?"
             author: ""
             authorImg: ""
             message: ""
 
     class ShowTweetItemView extends Views.TemplateView
+        tagName: "li"
+        className: "showTweetItem"
 
         constructor: (props) ->
             super props, tweetItemTemplate
@@ -36,6 +39,20 @@ define [
             throw new Error("Must set showId for tweet collection") unless @showId
 
             "/api/tweets/#{@showId}"
+
+        parse: (results) ->
+            makeTweetFrom = (r) ->
+                createdAt = new Date(r.created_at)
+                
+                time: createdAt
+                author: r.from_user
+                authorImg: r.profile_image_url
+                message: r.text
+                timeWords: createdAt.toDateString()
+
+            parsed = (makeTweetFrom result for result in results)
+
+            return parsed
 
 
     class ShowTweetCollectionView extends Views.TemplateCollectionView

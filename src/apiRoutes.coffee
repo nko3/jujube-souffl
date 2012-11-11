@@ -1,11 +1,19 @@
+Twitter = require "twitter"
 
-
+config = require "./config"
 auth = require "./auth"
 {Users, Shows, ShowTweets} = require "./controllers"
 
 users = new Users
 shows = new Shows
 showTweets = new ShowTweets
+
+makeTweets = (tokenKey, tokenSecret) ->
+	new Twitter
+		consumer_key: config.twitter.consumerKey
+		consumer_secret: config.twitter.consumerSecret
+		access_token_key: tokenKey
+		access_token_secret: tokenSecret
 
 init = (app) ->
 
@@ -70,14 +78,27 @@ init = (app) ->
 			resp.json showDeets
 
 	app.get "/api/tweets/:showId", (req, resp) ->
+		console.log "Tweets", req.user
 		return resp.send 401 unless req.user
 
 		showId = req.param "showId"
 
-		showTweets.forShow showId, (err, found) ->
+		shows.single showId, (err, show) ->
+			console.log "FindShow", err, show
 			if err
 				return resp.send 500, err.message
 
-			resp.json found
+			unless show
+				return resp.send 404, "Show not found"
+
+			tweets = makeTweets req.user.token, req.user.tokenSecret
+
+			tweets.search show.name, (data) ->
+				console.log "TweetSearch: \n", data
+
+				# TODO: Parse out the data
+
+				resp.json data.results
+
 
 module.exports = {init}

@@ -10,10 +10,15 @@ appSettings = require "./connect-appSettings"
 
 users = new Users
 
+prodCallbackUrl = "http://tweetdvr.jitsu.com/auth/twitter/callback"
+devCallbackUrl = "http://tweetdvr.net/auth/twitter/callback"
+
+callbackUrl = if process.env.NODE_ENV == "production" then prodCallbackUrl else devCallbackUrl
+
 twitterOpts = 
-	consumerKey: "dNZoUXAururMB7mkPQkbfA"
-	consumerSecret: "zLYa9YRukIHh5Lj2thM2PMau65HaGM1VPji68piKZZo"
-	callbackURL: "http://tweetdvr.net/auth/twitter/callback"
+	consumerKey: config.twitter.consumerKey
+	consumerSecret: config.twitter.consumerSecret
+	callbackURL: callbackUrl
 
 authenticate = -> passport.authenticate
 

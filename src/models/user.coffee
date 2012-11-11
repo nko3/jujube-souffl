@@ -4,7 +4,7 @@ UserSchema =
 	id: String
 	displayName: String
 	token: String
-	tokenExpire: String
+	tokenSecret: String
 
 User = goose.MakeModelWith "User", UserSchema
 
