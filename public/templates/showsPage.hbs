@@ -1,13 +1,8 @@
 <h2>Your Shows</h2>
-{{#if shows}}
-	<ul class="people_list">
-	  	{{#each people}}
-	  	<li>{{this}}</li>
-	  	{{/each}}
-	</ul>
-{{else}}
-    <a href="#show-modal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Add A Show</a>
-{{/if}}
+
+<a id="showCreateForm" href="#" role="button" class="btn btn-large btn-primary">Add A Show</a>
+
+<section id="showsCollection"></section>
 
 <div id="show-modal" class="modal hide fade">
   <div class="modal-header">
@@ -15,12 +10,11 @@
   </div>
 
   <div class="modal-body">
-    <div>
       <div class="col1 pull-left">
         <div class="control-group">
-          <label class="control-label" for="showName">Name</label>
+          <label class="control-label" for="inputShowName">Name</label>
           <div class="controls">
-            <input type="text" id="showName" placeholder="Name of Show">
+            <input type="text" id="inputShowName" placeholder="Name of Show">
           </div>
         </div>
 
@@ -28,12 +22,12 @@
           <label class="control-label" for="startDate">Start Date</label>
           <div class="controls">
             <div class="input-append date" id="startDate" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-              <input class="span2" size="16" type="text" value="12-02-2012" readonly>
+              <input id="inputStartDate" class="span2" size="16" type="text" value="12-02-2012" readonly>
               <span class="add-on"><i class="icon-calendar"></i></span>
             </div>
           </div>
         </div>
-
+          
         <div class="control-group">
           <label class="control-label" for="startTime">Start Time</label>
           <div class="controls">
@@ -45,6 +39,7 @@
             </div>
           </div>  
         </div> 
+        
         <div class="control-group">
           <label class="control-label" for="duration">Duration (minutes)</label>
           <div class="controls">
@@ -73,9 +68,9 @@
         </div>
       </div>
     </div>
-  </div>
+
   <div class="modal-footer">
-    <button id="cancelModalBtn" class="btn">Close</button>
-    <button id="saveBtn" class="btn btn-primary">Save</button>
+    <a id="cancelCreate" href="#" class="btn" data-toggle="modal">Close</a>
+    <a id="saveShow" href="#" class="btn btn-primary">Save changes</a>
   </div>
 </div>

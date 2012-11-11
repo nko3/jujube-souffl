@@ -1,22 +1,18 @@
 define [
-  'chaplin'
+  'controllers/base'
   'models/home'
   'views/home'
-], (Chaplin, Home, HomeView) ->
+], (Bases, Home, HomeView) ->
   'use strict'
 
-  class HomeController extends Chaplin.Controller
+  class HomeController extends Bases.AuthController
 
-    title: 'Twitter DVR'
+    title: 'Twitter Feed with your DVR Shows'
 
     historyURL: (params) ->
       '/'
 
     show: (params) ->
-      if APPLICATION_SETTINGS.user
-        console.debug 'HomeController#loggedInUser', APPLICATION_SETTINGS
-        Chaplin.mediator.publish "login:twitter", APPLICATION_SETTINGS.user.displayName, APPLICATION_SETTINGS.user.token
-
-      console.debug 'HomeController#show'
+      super
       @model = new Home()
       @view = new HomeView {@model}

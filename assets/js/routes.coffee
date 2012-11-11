@@ -8,3 +8,4 @@ define ->
     match '', 'home#show'
     match 'about', "about#show"
     match 'shows', "shows#show"
+    match 'watch/:showId', "watch#show"

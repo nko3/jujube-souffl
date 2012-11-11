@@ -2,11 +2,13 @@ express = require 'express'
 stylus = require 'stylus'
 assets = require 'connect-assets'
 jsPathify = require 'connect-assets-jspaths'
+passport = require "passport"
 
 mongoose = require "mongoose"
 
 config = require "./config"
 auth = require "./auth"
+routes = require "./routes"
 appSettings = require "./connect-appSettings"
 
 app = express()
@@ -24,11 +26,8 @@ jsPathify assets, console.log
 # Set View Engine
 app.set 'view engine', 'jade'
 
-# All routes return layout.  (Chaplin loads views dynamically)
-
-app.get ['/', '/about', '/shows'], (req, resp) -> 
-  console.log "Render Page", req.user
-  resp.render 'index'
+# Register our routes (includes auth related routes)
+routes.init app
 
 connect = (dbUrl = config.dbServer) ->
     state = mongoose?.connection?.db?._state

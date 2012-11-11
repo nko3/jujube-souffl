@@ -1,9 +1,11 @@
 goose = require "./goose"
 
-User = goose.MakeModelWith "User", 
-    id: String
-    displayName: String
-    token: String
-    tokenExpire: String
+UserSchema = 
+	id: String
+	displayName: String
+	token: String
+	tokenExpire: String
+
+User = goose.MakeModelWith "User", UserSchema
 
 module.exports = User

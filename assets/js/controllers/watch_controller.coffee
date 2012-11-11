@@ -1,17 +1,17 @@
 define [
   'controllers/base'
-  'models/showsPage'
-  'views/showsPage'
-], (Bases, ShowsPage, ShowsPageView) ->
+  'views/watchPage'
+], (Bases, WatchPageView) ->
   'use strict'
 
   class ShowsController extends Bases.AuthController
 
-    title: 'Shows'
+    title: 'Watch'
 
     historyURL: (params) ->
-      '/shows'
+      '/watch/#{params.showId}'
 
     show: (params) ->
       super
-      @view = new ShowsPageView
+      @view = new WatchPageView 
+        showId: params.showId
