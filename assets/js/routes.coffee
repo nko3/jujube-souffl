@@ -7,3 +7,4 @@ define ->
 
     match '', 'home#show'
     match 'about', "about#show"
+    match 'shows', "shows#show"

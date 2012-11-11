@@ -18,7 +18,7 @@ auth.init app
 jsPathify assets, console.log
 
 # All routes return layout.  (Chaplin loads views dynamically)
-app.get ['/', '/about'], (req, resp) -> 
+app.get ['/', '/about', '/shows'], (req, resp) -> 
   resp.render 'index'
 
 # Define Port
