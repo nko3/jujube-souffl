@@ -12,5 +12,7 @@ define [
       super props, "showsPage", template
 
     afterRender: ->
+      super
+      
       @$("#startDate").datepicker()
       @$("#startTime").timepicker()
