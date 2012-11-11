@@ -1,6 +1,8 @@
 define [
   'views/base'
   'text!/templates/shows.hbs'
+  'bootstrap_datepicker'
+  'bootstrap_timepicker'
 ], (Views, template) ->
   'use strict'
 

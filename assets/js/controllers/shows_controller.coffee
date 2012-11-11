@@ -1,5 +1,4 @@
 define [
-  'jquery'
   'chaplin'
   'models/shows'
   'views/shows'

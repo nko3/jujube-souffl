@@ -27,7 +27,7 @@ require.config
     bootstrap_datepicker:
       deps:["bootstrap"]
     bootstrap_timepicker:
-      deps:["timepicker"]
+      deps:["bootstrap"]
     underscore:
       exports: "_"
     backbone:
